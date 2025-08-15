@@ -44,60 +44,76 @@ leftArrow.addEventListener('click', () => {
 });
 
 //adding chat bot //
-
-// Show/hide chat widget
-const chatButton = document.getElementById("chatButton");
-const chatWidget = document.getElementById("chatWidget");
-const closeChat = document.getElementById("closeChat");
-
-chatButton.addEventListener("click", () => {
-  chatWidget.style.display = "flex";
-  chatButton.style.display = "none";
-});
-
-closeChat.addEventListener("click", () => {
-  chatWidget.style.display = "none";
-  chatButton.style.display = "flex";
-});
-
-// Chat sending logic
-async function sendMessage(userText) {
+document.addEventListener("DOMContentLoaded", () => {
+  const chatButton = document.getElementById("chatButton");
+  const chatWidget = document.getElementById("chatWidget");
+  const closeChat = document.getElementById("closeChat");
+  const sendBtn = document.getElementById("sendBtn");
+  const userInput = document.getElementById("userInput");
   const chatLog = document.getElementById("chatLog");
-  chatLog.innerHTML += `<div class="user"><strong>You:</strong> ${userText}</div>`;
-  chatLog.scrollTop = chatLog.scrollHeight;
 
-  try {
-    const res = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        messages: [{ role: "user", content: userText }]
-      })
-    });
+  // Show chat
+  chatButton.addEventListener("click", () => {
+    chatWidget.style.display = "flex";
+    chatButton.style.display = "none";
+  });
 
-    if (!res.ok) throw new Error("Server error");
+  // Close chat
+  closeChat.addEventListener("click", () => {
+    chatWidget.style.display = "none";
+    chatButton.style.display = "flex";
+  });
 
-    const data = await res.json();
-    chatLog.innerHTML += `<div class="bot"><strong>Bot:</strong> ${data.reply}</div>`;
+  // Send message function
+  async function sendMessage(userText) {
+    if (!userText) return;
+
+    // Show user message
+    chatLog.innerHTML += `<div class="user"><strong>You:</strong> ${userText}</div>`;
     chatLog.scrollTop = chatLog.scrollHeight;
-  } catch (err) {
-    console.error(err);
-    chatLog.innerHTML += `<div class="bot"><strong>Bot:</strong> Sorry, something went wrong.</div>`;
-  }
-}
 
-document.getElementById("sendBtn").addEventListener("click", () => {
-  const input = document.getElementById("userInput");
-  const text = input.value.trim();
-  if (text) {
-    sendMessage(text);
-    input.value = "";
-  }
-});
+    try {
+      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer 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"
+        },
+        body: JSON.stringify({
+          model: "deepseek-v1",
+          messages: [{ role: "user", content: userText }]
+        })
+      });
 
-document.getElementById("userInput").addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    document.getElementById("sendBtn").click();
+      if (!response.ok) throw new Error("Network response was not OK");
+
+      const data = await response.json();
+
+      // Display bot reply
+      const botReply = data.choices[0].message.content;
+      chatLog.innerHTML += `<div class="bot"><strong>Bot:</strong> ${botReply}</div>`;
+      chatLog.scrollTop = chatLog.scrollHeight;
+
+    } catch (err) {
+      console.error(err);
+      chatLog.innerHTML += `<div class="bot"><strong>Bot:</strong> Sorry, something went wrong.</div>`;
+    }
   }
+
+  // Button click
+  sendBtn.addEventListener("click", () => {
+    const text = userInput.value.trim();
+    if (text) {
+      sendMessage(text);
+      userInput.value = "";
+    }
+  });
+
+  // Enter key
+  userInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      sendBtn.click();
+    }
+  });
 });

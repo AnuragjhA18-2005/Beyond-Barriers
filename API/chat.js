@@ -1,39 +1,30 @@
-// api/chat.js
-export default async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  if (req.method === "OPTIONS") return res.status(204).end();
-
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
+// OpenRouter API Chat Module
+async function sendMessageToBot(userText) {
+  if (!userText) return;
 
   try {
-    const { messages = [] } = req.body;
-    const upstream = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": process.env.APP_URL || "http://localhost:3000",
-        "X-Title": "Beyond Barrier",
+        "Authorization": "Bearer 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"
       },
       body: JSON.stringify({
-        model: "deepseek/deepseek-r1:free",
-        messages: [
-          { role: "system", content: "You are a helpful assistant for Beyond Barrier." },
-          ...messages
-        ],
-        stream: false
-      }),
+        model: "deepseek-v1",
+        messages: [{ role: "user", content: userText }]
+      })
     });
 
-    const data = await upstream.json();
-    const reply = data?.choices?.[0]?.message?.content || "Sorry, I had trouble replying.";
-    res.status(200).json({ reply });
+    if (!response.ok) {
+      throw new Error("Network response was not OK");
+    }
+
+    const data = await response.json();
+    const botReply = data.choices[0].message.content;
+    return botReply;
+
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Server error", detail: String(err) });
+    console.error("Error sending message:", err);
+    return "Sorry, something went wrong.";
   }
 }
