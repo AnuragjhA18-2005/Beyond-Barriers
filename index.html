@@ -135,7 +135,25 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    
+    <!-- Chat Button -->
+    <div class="chat-button" id="chatButton">
+        <img class="chat-button" src="ECHO logo.png" alt="Chat" />
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            Beyond Barriers Chatbot
+            <span class="close-chat" id="closeChat">&times;</span>
+        </div>
+        <div class="chat-log" id="chatLog"></div>
+        <div class="chat-input-area">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-container">
             <div class="footer-about">
@@ -165,6 +183,12 @@
             <p>© 2025 Beyond Barriers. All rights reserved.</p>
         </div>
     </footer>
+
+
+    <script src="script.js"></script>
+
+
+
 
 </body>
 

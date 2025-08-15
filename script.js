@@ -42,3 +42,62 @@ rightArrow.addEventListener('click', () => {
 leftArrow.addEventListener('click', () => {
   cardContainer.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
 });
+
+//adding chat bot //
+
+// Show/hide chat widget
+const chatButton = document.getElementById("chatButton");
+const chatWidget = document.getElementById("chatWidget");
+const closeChat = document.getElementById("closeChat");
+
+chatButton.addEventListener("click", () => {
+  chatWidget.style.display = "flex";
+  chatButton.style.display = "none";
+});
+
+closeChat.addEventListener("click", () => {
+  chatWidget.style.display = "none";
+  chatButton.style.display = "flex";
+});
+
+// Chat sending logic
+async function sendMessage(userText) {
+  const chatLog = document.getElementById("chatLog");
+  chatLog.innerHTML += `<div class="user"><strong>You:</strong> ${userText}</div>`;
+  chatLog.scrollTop = chatLog.scrollHeight;
+
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        messages: [{ role: "user", content: userText }]
+      })
+    });
+
+    if (!res.ok) throw new Error("Server error");
+
+    const data = await res.json();
+    chatLog.innerHTML += `<div class="bot"><strong>Bot:</strong> ${data.reply}</div>`;
+    chatLog.scrollTop = chatLog.scrollHeight;
+  } catch (err) {
+    console.error(err);
+    chatLog.innerHTML += `<div class="bot"><strong>Bot:</strong> Sorry, something went wrong.</div>`;
+  }
+}
+
+document.getElementById("sendBtn").addEventListener("click", () => {
+  const input = document.getElementById("userInput");
+  const text = input.value.trim();
+  if (text) {
+    sendMessage(text);
+    input.value = "";
+  }
+});
+
+document.getElementById("userInput").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    document.getElementById("sendBtn").click();
+  }
+});
