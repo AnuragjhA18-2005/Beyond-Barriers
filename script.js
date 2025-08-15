@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     chatButton.style.display = "flex";
   });
 
-  // **Updated sendMessage function**
+  // **Updated sendMessage function with better error handling**
   async function sendMessage(userText) {
     if (!userText) return;
 
@@ -75,21 +75,64 @@ document.addEventListener("DOMContentLoaded", () => {
     chatLog.innerHTML += `<div class="user"><strong>You:</strong> ${userText}</div>`;
     chatLog.scrollTop = chatLog.scrollHeight;
 
+    // Show "thinking" message
+    chatLog.innerHTML += `<div class="bot"><strong>Bot:</strong> <em>Thinking...</em></div>`;
+    chatLog.scrollTop = chatLog.scrollHeight;
+
     try {
-      // Call your Vercel API route instead of OpenRouter directly
+      console.log("Sending request to /api/chat with:", userText);
+      
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userText })
       });
 
+      console.log("Response status:", res.status);
+      console.log("Response ok:", res.ok);
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        console.error("Server responded with error:", errorText);
+        throw new Error(`Server error: ${res.status} - ${errorText}`);
+      }
+
       const data = await res.json();
-      chatLog.innerHTML += `<div class="bot"><strong>Bot:</strong> ${data.reply}</div>`;
+      console.log("Received data:", data);
+
+      // Remove "thinking" message
+      const botMessages = chatLog.querySelectorAll('.bot');
+      const lastBotMessage = botMessages[botMessages.length - 1];
+      if (lastBotMessage && lastBotMessage.textContent.includes('Thinking...')) {
+        lastBotMessage.remove();
+      }
+
+      // Add actual bot response
+      chatLog.innerHTML += `<div class="bot"><strong>Bot:</strong> ${data.reply || 'No response received'}</div>`;
       chatLog.scrollTop = chatLog.scrollHeight;
 
     } catch (err) {
-      console.error(err);
-      chatLog.innerHTML += `<div class="bot"><strong>Bot:</strong> Sorry, something went wrong.</div>`;
+      console.error("Full error details:", err);
+      
+      // Remove "thinking" message
+      const botMessages = chatLog.querySelectorAll('.bot');
+      const lastBotMessage = botMessages[botMessages.length - 1];
+      if (lastBotMessage && lastBotMessage.textContent.includes('Thinking...')) {
+        lastBotMessage.remove();
+      }
+
+      // Show detailed error message
+      let errorMessage = "Sorry, something went wrong.";
+      if (err.message.includes('404')) {
+        errorMessage = "Chat service not found. Make sure your API route is set up correctly.";
+      } else if (err.message.includes('500')) {
+        errorMessage = "Server error. Please check your API configuration.";
+      } else if (err.message.includes('Failed to fetch')) {
+        errorMessage = "Network error. Please check your internet connection.";
+      }
+      
+      chatLog.innerHTML += `<div class="bot"><strong>Bot:</strong> ${errorMessage}</div>`;
+      chatLog.scrollTop = chatLog.scrollHeight;
     }
   }
 
