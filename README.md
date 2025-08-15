@@ -32,7 +32,6 @@ Differently-abled students often face barriers in accessing learning resources, 
 
 - **Category Cards**
   - Each card represents a disability category.
-  - Adaptive layout: 4 → 3 → 2 → 1 cards per row based on screen size.
 
 - **Accessibility First**
   - High-contrast design.
