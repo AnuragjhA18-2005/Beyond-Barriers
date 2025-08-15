@@ -298,6 +298,34 @@ header.scrolled .sign-in-btn {
    padding:10px;
     gap: 50px;
 }
+
+/* Arrow button styles */
+.arrow {
+  background-color: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.arrow.left { left: 5px; }
+.arrow.right { right: 5px; }
+
+.arrow:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Ensure panel-container is relative for arrow positioning */
+.panel-container {
+  position: relative;
+}
+
 .card{
    flex: 0 0 180px;
     border-radius: 15px;
@@ -506,4 +534,22 @@ header.scrolled .sign-in-btn {
     flex-direction: row; 
     box-shadow: none; 
 }
+}
+
+/* No of cards fit on screen with arrow button*/
+@media (min-width: 1200px) {
+  .panel-content { gap: 40px; }
+  .card { flex: 0 0 calc((100% - 160px) / 4); } /* 4 cards */
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+  .card { flex: 0 0 calc((100% - 120px) / 3); } /* 3 cards */
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+  .card { flex: 0 0 calc((100% - 80px) / 2); } /* 2 cards */
+}
+
+@media (max-width: 767px) {
+  .card { flex: 0 0 calc(100% - 20px); } /* 1 card full width */
 }
