@@ -44,6 +44,9 @@ leftArrow.addEventListener('click', () => {
 });
 
 //adding chat bot //
+// ... all your existing code (menuToggle, navbar scroll, arrows, etc.) ...
+
+//adding chat bot //
 document.addEventListener("DOMContentLoaded", () => {
   const chatButton = document.getElementById("chatButton");
   const chatWidget = document.getElementById("chatWidget");
@@ -64,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     chatButton.style.display = "flex";
   });
 
-  // Send message function
+  // **Updated sendMessage function**
   async function sendMessage(userText) {
     if (!userText) return;
 
@@ -73,25 +76,15 @@ document.addEventListener("DOMContentLoaded", () => {
     chatLog.scrollTop = chatLog.scrollHeight;
 
     try {
-      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      // Call your Vercel API route instead of OpenRouter directly
+      const res = await fetch("/api/chat", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer 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"
-        },
-        body: JSON.stringify({
-          model: "deepseek-v1",
-          messages: [{ role: "user", content: userText }]
-        })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userText })
       });
 
-      if (!response.ok) throw new Error("Network response was not OK");
-
-      const data = await response.json();
-
-      // Display bot reply
-      const botReply = data.choices[0].message.content;
-      chatLog.innerHTML += `<div class="bot"><strong>Bot:</strong> ${botReply}</div>`;
+      const data = await res.json();
+      chatLog.innerHTML += `<div class="bot"><strong>Bot:</strong> ${data.reply}</div>`;
       chatLog.scrollTop = chatLog.scrollHeight;
 
     } catch (err) {
