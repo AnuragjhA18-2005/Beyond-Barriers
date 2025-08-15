@@ -6,7 +6,7 @@
 
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(90deg, #fefaf4 0%, #ffffff 100%);
     min-height: 100vh;
     color: #333;
   }
@@ -19,10 +19,10 @@
 
   /* Header Styles */
   header {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: linear-gradient(90deg, #fefaf4 0%, #ffffff 100%);
+    
     padding: 15px 0;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -31,9 +31,9 @@
   /* Navbar styles changes on scrolling the page */
   header.scrolled {
     padding: 8px 0;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    background: linear-gradient(90deg, #fefaf4 0%, #ffffff 100%);
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
   }
 
   header.scrolled nav {
@@ -86,6 +86,7 @@
     top: 0;
     z-index: 1000;
     align-items: center;
+
   }
 
   .logo {
@@ -217,84 +218,85 @@
     margin-left: auto;
     width: 450px;
   }
+
   /*footer added*/
   /* Footer Styles */
-footer {
-  background: linear-gradient(90deg, #fefaf4  0%, #ffffff 100%);
-  padding-top: 10px;
-  color: #333;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
+  footer {
+    background: linear-gradient(90deg, #fefaf4 0%, #ffffff 100%);
+    padding-top: 10px;
+    color: #333;
+    
+  }
 
-.footer-container {
-  max-width: 1200px;
-  
-  margin: auto;
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 100px;
-}
+  .footer-container {
+    max-width: 1200px;
 
-.footer-logo {
-  width: 140px;
-  margin-bottom: 15px;
-}
+    margin: auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 100px;
+  }
 
-.footer-about p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #555;
-}
+  .footer-logo {
+    width: 140px;
+    margin-bottom: 15px;
+  }
 
-.footer-links h3,
-.footer-contact h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #4CAF50;
-}
+  .footer-about p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+  }
 
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-}
+  .footer-links h3,
+  .footer-contact h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #4CAF50;
+  }
 
-.footer-links ul li {
-  margin-bottom: 8px;
-}
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+  }
 
-.footer-links ul li a {
-  text-decoration: none;
-  color: #666;
-  transition: color 0.3s ease;
-}
+  .footer-links ul li {
+    margin-bottom: 8px;
+  }
 
-.footer-links ul li a:hover {
-  color: #4CAF50;
-}
+  .footer-links ul li a {
+    text-decoration: none;
+    color: #666;
+    transition: color 0.3s ease;
+  }
 
-.footer-contact p {
-  font-size: 0.95rem;
-  color: #555;
-}
+  .footer-links ul li a:hover {
+    color: #4CAF50;
+  }
 
-.footer-contact a {
-  color: #4CAF50;
-  text-decoration: none;
-}
+  .footer-contact p {
+    font-size: 0.95rem;
+    color: #555;
+  }
 
-.footer-contact a:hover {
-  text-decoration: underline;
-}
+  .footer-contact a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
 
-.footer-bottom {
-  text-align: center;
-  margin-top: 30px;
-  padding: 15px 0;
-  font-size: 0.85rem;
-  color: #666;
-  background: linear-gradient(90deg, #fefaf4  0%, #ffffff 100%);
-}
+  .footer-contact a:hover {
+    text-decoration: underline;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px 0;
+    font-size: 0.85rem;
+    color: #666;
+    background: linear-gradient(90deg, #fefaf4 0%, #ffffff 100%);
+  }
 
 
   /* Animations */
@@ -341,7 +343,7 @@ footer {
   /*panel*/
 
   .panel-area {
-    background-color: #ffffff;
+    background: linear-gradient(90deg, #fefaf4 0%, #ffffff 100%);
   }
 
   .panel-text {
@@ -364,7 +366,7 @@ footer {
   .panel-container {
     max-width: 1200px;
     width: 100%;
-    background-color: #ffffff;
+    background: linear-gradient(90deg, #fefaf4 0%, #ffffff 100%);
     border-radius: 25px;
     padding: 10px 0;
   }
@@ -392,8 +394,8 @@ footer {
     flex: 1;
     min-width: 0;
     border-radius: 5px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.2);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
     transform-style: preserve-3d;
   }
