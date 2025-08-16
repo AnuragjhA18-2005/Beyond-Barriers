@@ -1,0 +1,9 @@
+# Node Commands
+
+$env:OPENROUTER_API_KEY="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"
+node server.js
+
+# Install Node
+
+[Watch this Video](https://youtu.be/uCgAuOYpJd0?si=4bPpDAxocmxf4VFJ)
+
