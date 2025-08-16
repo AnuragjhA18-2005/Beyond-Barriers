@@ -35,23 +35,92 @@
         </div>
     </header>
 
+
+
     <main>
-        <section class="hero">
+        <section class="hero-slider">
             <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Many Ways<br>One Goal: <span class="highlight">Learning...</span></h1>
-                        <p>Accessible education for every ability — empowering deaf, blind, and autistic learners to
-                            thrive</p>
-                        <button class="cta-button">Sign In</button>
-                    </div>
-                    <div class="hero-image">
-                        <img class="hero-image" src="mainbodyimg.png" alt="">
+                <!-- Slide 1 -->
+                <div class="hero-slide active">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1>Many Ways<br>One Goal: <span class="highlight">Learning...</span></h1>
+                            <p>
+                                <span class="typed-text"
+                                    data-strings='["Accessible education for every ability — empowering deaf, blind, and autistic learners to thrive"]'></span>
+                            </p>
+                            <button class="cta-button">Sign In</button>
+                        </div>
+                        <div class="hero-image">
+                            <img src="mainbodyimg.png" alt="">
+                        </div>
                     </div>
                 </div>
+
+                <!-- Slide 2 -->
+                <div class="hero-slide">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1>Echo<span class="highlight">Vision</span> :-</h1>
+                            <h2>Introducing an AI chatbot for blinds</h2>
+                            <p>
+                                <span class="typed-text"
+                                    data-strings='["Helps you in converting text to speech"]'></span>
+                            </p>
+                            <button class="cta-button">Explore More</button>
+                        </div>
+                        <div class="hero-image">
+                            <img src="blind.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="hero-slide">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1>Echo<span class="highlight">Hear</span> :-</h1>
+                            <h2>Introducing an AI chatbot for deafs</h2>
+                            <p>
+                                <span class="typed-text"
+                                    data-strings='["Acts on voice commands and understands sign language"]'></span>
+                            </p>
+                            <button class="cta-button">Explore More</button>
+                        </div>
+                        <div class="hero-image">
+                            <img src="deaf.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="hero-slide">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1>Echo<span class="highlight">Calm</span> :-</h1>
+                            <h2>Introducing an AI chatbot for autistic</h2>
+                            <p>
+                                <span class="typed-text"
+                                    data-strings='["Activates low stimulation and helps understand one instruction at a time"]'></span>
+                            </p>
+                            <button class="cta-button">Explore More</button>
+                        </div>
+                        <div class="hero-image">
+                            <img src="autism.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Dots -->
+                <div class="hero-dots"></div>
             </div>
         </section>
+
     </main>
+
+
+
 
     <div class="panel-area">
         <div class="panel-text">
@@ -135,7 +204,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Chat Button -->
     <div class="chat-button" id="chatButton">
         <img class="chat-button" src="ECHO logo.png" alt="Chat" />
@@ -188,7 +257,8 @@
     <script src="script.js"></script>
 
 
-
+    <!-- typed animation js -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
 </body>
 

@@ -315,3 +315,72 @@ document.addEventListener('DOMContentLoaded', () => {
 
   wireSendControls();
 });
+
+
+
+//Make the hero section slidee with typing effect
+
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".hero-slide");
+  const dotsContainer = document.querySelector(".hero-dots");
+  let currentIndex = 0;
+  let slideInterval;
+
+  // Generate dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement("span");
+    dot.classList.add("hero-dot");
+    if (i === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => showSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll(".hero-dot");
+
+  // Show slide + run Typed.js
+  function showSlide(index) {
+    slides[currentIndex].classList.remove("active");
+    dots[currentIndex].classList.remove("active");
+
+    currentIndex = index;
+    slides[currentIndex].classList.add("active");
+    dots[currentIndex].classList.add("active");
+
+    // Clear old Typed instance if exists
+    const typedElement = slides[currentIndex].querySelector(".typed-text");
+    if (typedElement) {
+      const strings = JSON.parse(typedElement.getAttribute("data-strings"));
+      typedElement.innerHTML = ""; // Reset text
+      new Typed(typedElement, {
+        strings,
+        typeSpeed: 55,
+        backSpeed: 20,
+        backDelay: 2000,
+        loop: false,
+      });
+    }
+  }
+
+  // Auto cycle
+  function nextSlide() {
+    let nextIndex = (currentIndex + 1) % slides.length;
+    showSlide(nextIndex);
+  }
+
+  function startSlider() {
+    slideInterval = setInterval(nextSlide, 9000);
+  }
+
+  function stopSlider() {
+    clearInterval(slideInterval);
+  }
+
+  // Start first slide typed effect
+  showSlide(0);
+  startSlider();
+
+  // Pause on hover
+  const heroSlider = document.querySelector(".hero-slider");
+  heroSlider.addEventListener("mouseenter", stopSlider);
+  heroSlider.addEventListener("mouseleave", startSlider);
+});
