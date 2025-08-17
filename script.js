@@ -67,9 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatButton = $('chatButton');
   const chatWidget = $('chatWidget');
   const closeChat = $('closeChat');
-  const chatLog   = $('chatLog');
+  const chatLog = $('chatLog');
   const userInput = $('userInput');
-  const sendBtn   = $('sendBtn');
+  const sendBtn = $('sendBtn');
 
   const openChat = () => {
     if (!chatWidget) return;
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   if (chatButton) chatButton.addEventListener('click', openChat);
-  if (closeChat)  closeChat.addEventListener('click', closeChatWidget);
+  if (closeChat) closeChat.addEventListener('click', closeChatWidget);
 
   function addLine(html) {
     if (!chatLog) return;
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!res.ok) {
         let details = '';
-        try { details = await res.text(); } catch (_) {}
+        try { details = await res.text(); } catch (_) { }
         addLine(`<div class="bot"><strong>Bot:</strong> Chat service error (${res.status}). ${escapeHTML(details || '')}</div>`);
         return;
       }
@@ -229,4 +229,52 @@ document.addEventListener("DOMContentLoaded", () => {
   const heroSlider = document.querySelector(".hero-slider");
   heroSlider.addEventListener("mouseenter", stopSlider);
   heroSlider.addEventListener("mouseleave", startSlider);
+});
+//adding signup page pop up and background blur
+
+//adding signup page pop up and background blur
+document.addEventListener("DOMContentLoaded", () => {
+  const signInBtn = document.querySelector(".sign-in-btn");
+  const overlay = document.querySelector(".overlay");
+  const formContainer = document.querySelector(".form-container");
+
+  // Add close button dynamically
+  const closeBtn = document.createElement("span");
+  closeBtn.innerHTML = "&times;";
+  closeBtn.classList.add("close-popup");
+  formContainer.appendChild(closeBtn);
+
+  // Open popup function
+  function openPopup() {
+    overlay.classList.add("active");
+    formContainer.classList.add("active");
+    // Prevent body scroll when popup is open
+    document.body.style.overflow = "hidden";
+  }
+
+  // Close popup function - REMOVED the problematic setTimeout
+  function closePopup() {
+    overlay.classList.remove("active");
+    formContainer.classList.remove("active");
+    // Restore body scroll
+    document.body.style.overflow = "";
+  }
+
+  // Event listeners
+  signInBtn.addEventListener("click", openPopup);
+  closeBtn.addEventListener("click", closePopup);
+  
+  // Close when clicking outside (on overlay)
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+      closePopup();
+    }
+  });
+
+  // Close with Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && formContainer.classList.contains("active")) {
+      closePopup();
+    }
+  });
 });
