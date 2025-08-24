@@ -1,0 +1,122 @@
+/* profile page */
+ .user-profile{
+    padding:20px;
+    background: linear-gradient(
+        to right,
+        #ffffff,
+        #fff5e6
+    );
+ }
+ .row {
+  display: flex;
+  gap: 15px;  
+}
+
+.pfp-head{
+    height:64px;
+    width: 276px;
+    margin-top: 50px;
+    color: #ffffff;
+    background-color: #4caf50;
+    font-family: 'Martel sans', sans-serif;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    transition: box-shadow 0.3s ease;
+
+    
+}
+.pfp-head:hover{
+    box-shadow: 0 0 15px rgb(80, 155, 59);
+
+}
+
+ .pfp-details{
+    margin:10px;
+    margin-top: 50px;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    align-items: center;
+   
+ }
+
+.pfp-input{
+    height:52px;
+    color: #7B7979;
+    background-color: #fff5e6;
+    border: 2px solid #7B7979;
+    border-radius: 20px;
+    text-align: center;
+    font-family: 'Arimo', sans-serif;
+    font-size: 18px;
+    padding: 5px;
+}
+.user-name{
+    text-align-last :center;
+    width:50%;
+    height: 45px; 
+    padding-right: 10px;
+}
+.user-age{
+    width: 20%;
+    height: 45px;
+}
+.user-grade{
+    width: 20%;
+    height: 45px;
+}
+.user-favsub{
+    width: 280px;
+    height: 35px;
+}
+.user-specintrst{
+    width: 280px;
+    height: 35px;
+}
+.choices{
+  width: 300px;
+}
+.edset {
+  width: 300px;
+}
+
+.pfp-submit{
+    height:74px;
+    width: 318px;
+    color: #ffffff;
+    background-color: #4CAF50;
+    font-family: 'Martel sans', sans-serif;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    border:none;
+    transition: box-shadow 0.3s ease;
+}
+
+.pfp-submit:hover{
+   box-shadow: 0 0 15px rgb(80, 155, 59);
+   cursor:pointer;
+}
+
+.disabled-groupimg{
+    display:flex;
+    justify-content:flex-end;
+    transform: translateY(-120%);
+    pointer-events: none;         
+    
+}
+
+.pfp-avatar{
+    margin: 15px;
+    color: #7B7979;
+    font-size: 17.5px;
+    font-family: 'Arimo', sans-serif;
+    position: relative;
+    left:70px;
+}
