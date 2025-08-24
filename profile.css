@@ -1,91 +1,112 @@
 /* profile page */
- .user-profile{
-    padding:20px;
-    background: linear-gradient(
-        to right,
-        #ffffff,
-        #fff5e6
-    );
- }
- .row {
-  display: flex;
-  gap: 15px;  
+body {
+    padding: 10px;
+    background: linear-gradient(90deg, #ffffff 0%, #fff2e0 100%);
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.pfp-head{
-    height:64px;
-    width: 276px;
-    margin-top: 50px;
+.user-profile {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 30px 15px ;
+    margin: 50px 200px 50px 50px;
+    max-width: 500px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+.pfp-head {
+    height: 40px;
+    width: 180px;
+    margin-top: 20px;
     color: #ffffff;
     background-color: #4caf50;
     font-family: 'Martel sans', sans-serif;
-    font-size: 25px;
+    font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 40px;
+    border-radius: 15px;
     transition: box-shadow 0.3s ease;
-
-    
+    font-weight: 600;
+    margin-left: 14px;
 }
-.pfp-head:hover{
+
+.pfp-head:hover {
     box-shadow: 0 0 15px rgb(80, 155, 59);
-
 }
 
- .pfp-details{
-    margin:10px;
-    margin-top: 50px;
+.pfp-details {
+    margin: 10px;
+    margin-top: 20px;
     width: 50%;
     display: flex;
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 15px;
     align-items: center;
-   
- }
-
-.pfp-input{
-    height:52px;
-    color: #7B7979;
-    background-color: #fff5e6;
-    border: 2px solid #7B7979;
-    border-radius: 20px;
-    text-align: center;
-    font-family: 'Arimo', sans-serif;
-    font-size: 18px;
-    padding: 5px;
+    flex-direction: column;
 }
-.user-name{
-    text-align-last :center;
-    width:50%;
-    height: 45px; 
+
+.pfp-input {
+    height: 35px;
+    color: #7B7979;
+    background-color: #ffffff;
+    border: 2px solid #7B7979;
+    border-radius: 15px;
+    text-align: left;
+    font-family: 'Arimo', sans-serif;
+    font-size: 14px;
+    padding: 0px;
+}
+
+::placeholder {
+    padding: 15px;
+}
+
+.user-name {
+    width: 35%;
+    height: 40px;
     padding-right: 10px;
 }
-.user-age{
-    width: 20%;
-    height: 45px;
-}
-.user-grade{
-    width: 20%;
-    height: 45px;
-}
-.user-favsub{
-    width: 280px;
-    height: 35px;
-}
-.user-specintrst{
-    width: 280px;
-    height: 35px;
-}
-.choices{
-  width: 300px;
-}
-.edset {
-  width: 300px;
+
+.user-age {
+    width: 25%;
+    height: 40px;
 }
 
-.pfp-submit{
-    height:74px;
+.user-grade {
+    width: 30%;
+    height: 40px;
+}
+
+.user-favsub {
+    width: 222px;
+    height: 40px;
+}
+
+.user-specintrst {
+    width: 222px;
+    height: 40px;
+}
+
+.choices {
+    width: 225px;
+    height: 45px;
+}
+
+.edset {
+    width: 225px;
+    height: 45px;
+}
+
+.pfp-submit {
+    height: 74px;
     width: 318px;
     color: #ffffff;
     background-color: #4CAF50;
@@ -95,28 +116,83 @@
     align-items: center;
     justify-content: center;
     border-radius: 40px;
-    border:none;
+    border: none;
     transition: box-shadow 0.3s ease;
 }
 
-.pfp-submit:hover{
-   box-shadow: 0 0 15px rgb(80, 155, 59);
-   cursor:pointer;
+.pfp-submit:hover {
+    box-shadow: 0 0 15px rgb(80, 155, 59);
+    cursor: pointer;
 }
 
-.disabled-groupimg{
-    display:flex;
-    justify-content:flex-end;
+.disabled-groupimg {
+    display: flex;
+    justify-content: flex-end;
     transform: translateY(-120%);
-    pointer-events: none;         
-    
+    pointer-events: none;
 }
 
-.pfp-avatar{
-    margin: 15px;
-    color: #7B7979;
-    font-size: 17.5px;
-    font-family: 'Arimo', sans-serif;
+.photo-upload-section {
     position: relative;
-    left:70px;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.photo-upload-section p {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-family: 'Martel sans', sans-serif;
+}
+
+.photo-placeholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #e1bee7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid #9c27b0;
+}
+
+.photo-placeholder:hover {
+    background: #ce93d8;
+    transform: scale(1.05);
+}
+
+.photo-icon {
+    color: #6a1b9a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    width: 280px;
+    align-self: center;
+}
+
+.submit-btn:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+.disabled-groupimg{
+    width: 1200px;
+    height: 400px;
 }

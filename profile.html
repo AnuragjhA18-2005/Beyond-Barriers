@@ -1,83 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile Page</title>
-    <link rel="stylesheet" href="profile.css" />
-  </head>
-  <body>
-    <div class="user-profile">
-      <div class="pfp-head">PROFILE DETAILS</div>
 
-      <form action="#" method="post">
-        <div class="pfp-details">
-          <div class="row">
-            <input
-              type="text"
-              class="user-name pfp-input"
-              name="username"
-              placeholder="Name"
-            />
-            <input
-              type="number"
-              class="user-age pfp-input"
-              name="age"
-              placeholder="Age"
-            />
-            <input
-              type="number"
-              class="user-grade pfp-input"
-              name="grade"
-              placeholder="Grade"
-            />
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="profile.css" />
+</head>
 
-          <div class="row">
-            <select name="disability_options" class="choices pfp-input">
-              <option value="" disabled selected>Choose disability</option>
-              <option value="impaired_vision">Impaired Vision</option>
-              <option value="impaired_hearing">Impaired Hearing</option>
-              <option value="impaired_speech">Impaired Speech</option>
-              <option value="down_syndrome">Down Syndrome</option>
-              <option value="autism">Autism</option>
-            </select>
-
-            <select name="educational_setting" class="edset pfp-input">
-              <option value="" disabled selected>Educational setting</option>
-              <option value="mainstream_school">Mainstream School</option>
-              <option value="special_school">Special School</option>
-              <option value="inclusive_learning">Inclusive Learning</option>
-              <option value="home_learning">Home Based Learning</option>
-            </select>
-          </div>
-
-          <div class="row">
-            <input
-              type="text"
-              class="user-favsub pfp-input"
-              name="favourite_subjects"
-              placeholder="Favourite Subjects"
-            />
-            <input
-              type="text"
-              class="user-specintrst pfp-input"
-              name="special_interests"
-              placeholder="Special Interests"
-            />
-          </div>
-        </div>
-
-        <div class="pfp-avatar">
-          <p>Click to add photo</p>
-          <img src="profile_avatar.png" alt="Profile Avatar" />
-        </div>
-        <button type="submit" class="pfp-submit">SUBMIT</button>
-      </form>
-
-      <div class="disabled-groupimg">
-        <img src="disabled_children.png" alt="Disabled Children" />
+<body>
+  <div class="user-profile">
+    <div class="pfp-head">PROFILE DETAILS</div>
+    <div class="pfp-details">
+      <div class="row">
+        <input type="text" class="user-name pfp-input" name="username" placeholder="Name" />
+        <input type="number" class="user-age pfp-input" name="age" placeholder="Age" />
+        <input type="number" class="user-grade pfp-input" name="grade" placeholder="Grade" />
       </div>
+
+      <div class="row">
+        <select name="disability_options" class="choices pfp-input">
+          <option value="" disabled selected>Choose disability</option>
+          <option value="impaired_vision">Impaired Vision</option>
+          <option value="impaired_hearing">Impaired Hearing</option>
+          <option value="impaired_speech">Impaired Speech</option>
+          <option value="down_syndrome">Down Syndrome</option>
+          <option value="autism">Autism</option>
+        </select>
+
+        <select name="educational_setting" class="edset pfp-input">
+          <option value="" disabled selected>Educational setting</option>
+          <option value="mainstream_school">Mainstream School</option>
+          <option value="special_school">Special School</option>
+          <option value="inclusive_learning">Inclusive Learning</option>
+          <option value="home_learning">Home Based Learning</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <input type="text" class="user-favsub pfp-input" name="favourite_subjects" placeholder="Favourite Subjects" />
+        <input type="text" class="user-specintrst pfp-input" name="special_interests" placeholder="Special Interests" />
+      </div>
+
+      <div class="photo-upload-section">
+        <p>Click to add photo</p>
+        <div class="photo-placeholder" id="photo-placeholder">
+          <div class="photo-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+          </div>
+        </div>
+        <input type="file" id="photo-upload" accept="image/*" style="display: none;">
+      </div>
+
+      <button type="submit" class="submit-btn">SUBMIT</button>
     </div>
-  </body>
+  </div>
+
+  <div class="disabled-groupimg">
+    <img src="disabled_children.png" alt="Disabled Children" />
+  </div>
+</body>
+
 </html>
