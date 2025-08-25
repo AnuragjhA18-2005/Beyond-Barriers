@@ -280,7 +280,19 @@
         </button>
     </div>
 
+    <script src="signIn.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const showWelcome = localStorage.getItem("showWelcome");
+        if (showWelcome === "true") {
+            const username = localStorage.getItem("username") || "User";
+            alert(`Welcome, ${username}! 🎉`);
 
+            // Reset the flag so it won’t show again on refresh
+            localStorage.setItem("showWelcome", "false");
+        }
+        });
+    </script>
 </body>
 
 </html>
