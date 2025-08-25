@@ -27,6 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("username", username);
     localStorage.setItem("email", email);
 
+    //When user is logged in 
+    localStorage.setItem("isLoggedIn", "true");
+
     // Save a flag to indicate "first login"
     localStorage.setItem("showWelcome", "true");
 
@@ -43,10 +46,35 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("username", "Google User");
     localStorage.setItem("email", "user@gmail.com");
 
+    //When user is logged in 
+    localStorage.setItem("isLoggedIn", "true");
     // Save a flag to indicate "first login"
     localStorage.setItem("showWelcome", "true");
 
     // Redirect
     window.location.href = "index.html";  
   });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.getElementById("nav-links");
+  const navSignInBtn = document.getElementById("navSignInBtn");
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+  if (isLoggedIn && navLinks && navSignInBtn) {
+    // Remove old Sign In button
+    navSignInBtn.parentElement.remove();
+
+    // Create Profile button
+    const li = document.createElement("li");
+    const profileBtn = document.createElement("button");
+    profileBtn.className = "sign-in-btn";  // reuse styling
+    profileBtn.innerHTML = '<img src="signinimg.png" class="sign-in-btnimg"> Profile';
+    profileBtn.addEventListener("click", () => {
+      window.location.href = "profile.html";
+    });
+
+    li.appendChild(profileBtn);
+    navLinks.appendChild(li);
+  }
 });
