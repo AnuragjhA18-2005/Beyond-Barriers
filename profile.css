@@ -12,8 +12,9 @@ body {
     border-radius: 20px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     padding: 30px 15px ;
-    margin: 50px 200px 50px 50px;
+    margin: 125px 200px 50px 50px;
     max-width: 500px;
+  
 }
 
 .row {
@@ -207,7 +208,7 @@ body {
 .disabled-image-wrap img {
     display: block;
 }
-
+/*
 .blob {
     position: absolute;
     filter: blur(35px);
@@ -240,8 +241,9 @@ body {
     right: 8%;
     opacity: 0.7;
 }
+    
 
-/* right-side additional blobs */
+/* right-side additional blobs 
 .blob-green-rt {
     background: #66bb6a;
     width: 180px;
@@ -266,7 +268,7 @@ body {
     right: 15px;
     opacity: 0.8;
 }
-
+*/
 /* LogOut Button */
 .logout-btn {
   background: #e53935;
